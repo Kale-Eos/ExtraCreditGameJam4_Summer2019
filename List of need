@@ -1,0 +1,17 @@
+Unity 2019.1.3f1
+Extra Credit Game Jam #4 - June 2019
+2d racing Platformer
+
+time based - countdown
+minimap
+you design platforms for your character to race through the level as fast as you can to reach point A to point B.
+level can be premade or empty
+
+need items to generate with rigidbody and/or box colliders
+need start, finish, and timer countdown locations
+need jump, climb, run mechanic
+need ui control for blocks, slow down time (hard mode - no time stop)
+
+sound for walk, run, jump, place, bgm, game over, click, hover
+
+art for level, exit, player
