@@ -16,12 +16,12 @@ public class VerticalPass : MonoBehaviour
     void Update()
     {
         // pass platform conditions
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.S))
         {
-            waitTime = 0.5f;
+            waitTime = 0.1f;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             if (waitTime <= 0)
             {

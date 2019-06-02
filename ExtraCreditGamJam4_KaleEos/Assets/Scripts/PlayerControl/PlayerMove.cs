@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -92,20 +93,21 @@ public class PlayerMove : MonoBehaviour
         // Ground check conditions
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
+        // movement conditions
         moveInput = Input.GetAxis("Horizontal");
-        Debug.Log(moveInput);
+        // Debug.Log(moveInput);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
         if (facingRight == false && moveInput > 0)
         {
-            // Flip();                                                 // for sprites
-            transform.eulerAngles = new Vector3(0, 0, 0);        // for bone structure
+            Flip();                                                 // for sprites
+            // transform.eulerAngles = new Vector3(0, 0, 0);        // for bone structure
         }
 
         else if (facingRight == true && moveInput < 0)
         {
-            // Flip();                                                 // for sprites
-            transform.eulerAngles = new Vector3(0, 180, 0);      // for bone structure
+            Flip();                                                 // for sprites
+            // transform.eulerAngles = new Vector3(0, 180, 0);      // for bone structure
         }
     }
 
