@@ -10,26 +10,37 @@ public class PlayerMoveAlt : MonoBehaviour
 
     private Rigidbody2D rb;
     public float speed;
-    public float jumpForce;             // jump power
     private float moveInput;
     private bool facingRight = true;
 
+    [Space]
+    [Header("Jump Control:")]
+    public float jumpForce;             // jump power
     private float jumpTimeCounter;      // in seconds
     public float jumpTime;
     private bool isJumping;             // in air detector
 
-    private bool isGrounded;
+    [Space]
+    [Header("Ground Control:")]
+    public bool isGrounded;
     public Transform groundCheck;       // ground detector
     public float checkRadius;
     public LayerMask whatIsGround;      // ground verification
 
+    [Space]
+    [Header("Positions:")]
     public Vector3 startingPosition;    // starting position
     public float deathHeight;           // deadzone position
-
     public GameObject EditUI;           // In-game editor UI mode
-    public float powerDuration = 1;     // how long can slow time
-    public float cooldownTime = 2;      // in seconds
-    private float nextFireTime = 0;
+
+    [Space]
+    [Header("Time Controls:")]
+    public bool cooldownState;              // state for cooldown
+    public float powerDuration = 2f;        // how long can slow time + 1 second
+    public float cooldownDuration = 4f;     // must change where this is + 1 of powerDuration
+    private float cooldownStart = 0f;       // starting point for cooldown timer
+
+    public bool thisDoesNothing = false;        // yup
 
     void Start()
     {
@@ -46,7 +57,7 @@ public class PlayerMoveAlt : MonoBehaviour
 
     void FixedUpdate()
     {
-        // direction modifier
+        // Direction Modifier
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
@@ -73,19 +84,19 @@ public class PlayerMoveAlt : MonoBehaviour
     void Update()
     {
 
-        // jumping conditions
+        // Jump Conditions
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        if(isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))      // if grounded, jump is good to go
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
         }
 
-        if(Input.GetKey(KeyCode.Space) && isJumping == true)
+        if (Input.GetKey(KeyCode.Space) && isJumping == true)
         {
-            if(jumpTimeCounter > 0)
+            if(jumpTimeCounter > 0)                         // allows for jump if jumpis remainingg
             {
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
@@ -93,7 +104,7 @@ public class PlayerMoveAlt : MonoBehaviour
 
             else
             {
-                isJumping = false;
+                isJumping = false;              // no jump for you
             }
         }
 
@@ -102,8 +113,8 @@ public class PlayerMoveAlt : MonoBehaviour
             isJumping = false;
         }
 
-        // restart conditions
-        if (this.gameObject.transform.position.y <= deathHeight)
+        // Restart Conditions
+        if (this.gameObject.transform.position.y <= deathHeight)        // falls below death zone = restart
         {
             //if (scenemanager.scenecountinbuildsettings = 1)
             //{
@@ -113,7 +124,7 @@ public class PlayerMoveAlt : MonoBehaviour
             Respawn();
         }
 
-        if (this.gameObject.transform.position.y >= deathHeight && Input.GetKeyDown("r"))
+        if (this.gameObject.transform.position.y >= deathHeight && Input.GetKeyDown("r"))   // manual restart
         {
             Respawn();
             Debug.Log("response");
@@ -124,37 +135,40 @@ public class PlayerMoveAlt : MonoBehaviour
         //    Respawn();
         //}
 
-        // freezing conditions and cooldown
-        //if (Time.deltaTime > nextFireTime)
-        //{
-            if (Input.GetKey(KeyCode.W) && EditUI.activeInHierarchy == false)
-            {
-                Time.timeScale = 0.4f;
-                EditUI.gameObject.SetActive(true);
-
-                if (EditUI.activeInHierarchy == true)
-                {
-                    StartCoroutine(EditTimer());
-                }
-            }
-            else
-            {
-                Debug.Log("EditUI already open");
-            }
-
-            //Debug.Log("Cooldown activated");
-            //nextFireTime = Time.deltaTime + cooldownTime;
-        //}
-
-        // turn off
-        if (Input.GetKey(KeyCode.E) && EditUI.activeInHierarchy == true)
+        // Freezing Conditions and Cooldown
+        if (Input.GetKey(KeyCode.W) && cooldownState == false)          // activates slow down time
         {
-            Time.timeScale = 1f;
-            EditUI.gameObject.SetActive(false);
+            cooldownState = true;
+            Time.timeScale = 0.4f;
+            //StartCoroutine(EditTimer());
         }
-        else
+        else if (Input.GetKey(KeyCode.W) && cooldownState == true)      // prevents spam of slow down time
         {
-            Debug.Log("EditUI already closed");
+            Debug.Log("Does Nothing");
+        }
+
+        // Manual Turn Off Control
+        if (Input.GetKey(KeyCode.E) && cooldownState == true)           // manual control of turn off
+        {
+            cooldownState = false;
+            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.E) && cooldownState == false)          // prevents glitch out
+        {
+            Debug.Log("Does Nothing");
+        }
+
+        // Cooldown Control
+        if (cooldownState == true)                      // condition for cooldown
+        {
+            cooldownStart += Time.deltaTime;
+
+            if(cooldownStart >= cooldownDuration)       // metered time
+            {
+                cooldownState = false;
+                cooldownStart = 0f;
+            }            
         }
     }
 
@@ -162,11 +176,11 @@ public class PlayerMoveAlt : MonoBehaviour
     {
         yield return new WaitForSeconds(powerDuration);
         Time.timeScale = 1f;
-        EditUI.gameObject.SetActive(false);
+    //    EditUI.gameObject.SetActive(false);
     }
 
     public void Respawn()
     {
-        this.gameObject.transform.position = startingPosition;
+        this.gameObject.transform.position = startingPosition;      // restarts position to starting position. No checkpoints.
     }
 }

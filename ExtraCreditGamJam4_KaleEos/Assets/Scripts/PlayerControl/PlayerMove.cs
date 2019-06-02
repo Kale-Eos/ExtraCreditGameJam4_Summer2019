@@ -7,24 +7,37 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     AudioManager audioManager;
-    
-    public float speed;                         // custom speed var
-    public float jumpForce;                     // jump power
-    private float moveInput;                    // left-right input
 
+    public float speed;                     // custom speed var
+    private float moveInput;                // left-right input
     private Rigidbody2D rb;
     private bool facingRight = true;
 
-    private bool isGrounded;                    // yes-no if grounded
-    public Transform groundCheck;               // ground object
-    public float checkRadius;                   // check distance;
-    public LayerMask whatIsGround;              // tag check
+    [Space]
+    [Header("Jump Control:")]
+    public float jumpForce;                 // jump power
+    private int extraJumps;                 // more jumps
+    public int extraJumpsValue;             // actual value
 
-    private int extraJumps;
-    public int extraJumpsValue;
+    [Space]
+    [Header("Ground Control:")]
+    private bool isGrounded;                // yes-no if grounded
+    public Transform groundCheck;           // ground object
+    public float checkRadius;               // check distance;
+    public LayerMask whatIsGround;          // tag check
 
-    public Vector3 startingPosition;            // spawn location
-    public float deathHeight;                   // deadzone position
+    [Space]
+    [Header("Positions:")]
+    public Vector3 startingPosition;        // spawn location
+    public float deathHeight;               // deadzone position
+    public GameObject EditUI;               // In-game editor UI mode
+
+    [Space]
+    [Header("Time Controls:")]
+    public bool cooldownState;              // state for cooldown
+    public float powerDuration = 2f;        // how long can slow time + 1 second
+    public float cooldownDuration = 5f;     // must change where this is + 1 of powerDuration
+    private float cooldownStart = 0f;       // starting point for cooldown timer
 
     public bool thisDoesNothing = false;        // yup
     
@@ -45,23 +58,23 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         // jump condtions
-        if(isGrounded == true)
+        if(isGrounded == true)              // gives jumps
         {
             extraJumps = extraJumpsValue;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)       // jump
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
+        else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)       // no more jumps
         {
             rb.velocity = Vector2.up * jumpForce;
         }
 
         // restart conditions
-        if(this.gameObject.transform.position.y <= deathHeight)
+        if(this.gameObject.transform.position.y <= deathHeight)         // falls below death zone = restart
         {
             //if (scenemanager.scenecountinbuildsettings = 1)
             //{
@@ -71,7 +84,7 @@ public class PlayerMove : MonoBehaviour
             Respawn();
         }
 
-        if(this.gameObject.transform.position.y >= deathHeight && Input.GetKeyDown("r"))
+        if(this.gameObject.transform.position.y >= deathHeight && Input.GetKeyDown("r"))        // manual restart
         {
             Respawn();
             Debug.Log("response");
@@ -81,11 +94,55 @@ public class PlayerMove : MonoBehaviour
         //{
         //    Respawn();
         //}
+
+        // Freezing Conditions and Cooldown
+        if (Input.GetKey(KeyCode.W) && cooldownState == false)          // activates slow down time
+        {
+            cooldownState = true;
+            Time.timeScale = 0.4f;
+            //StartCoroutine(EditTimer());
+        }
+        else if (Input.GetKey(KeyCode.W) && cooldownState == true)      // prevents spam of slow down time
+        {
+            Debug.Log("Does Nothing");
+        }
+
+        // Manual Turn Off Control
+        if (Input.GetKey(KeyCode.E) && cooldownState == true)           // manual control of turn off
+        {
+            cooldownState = false;
+            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.E) && cooldownState == false)          // prevents glitch out
+        {
+            Debug.Log("Does Nothing");
+        }
+
+        // Cooldown Control
+        if (cooldownState == true)                      // condition for cooldown
+        {
+            cooldownStart += Time.deltaTime;
+
+            if (cooldownStart >= cooldownDuration)      // metered time
+            {
+                cooldownState = false;
+                cooldownStart = 0f;
+                Time.timeScale = 1f;
+            }
+        }
+    }
+
+    IEnumerator EditTimer()
+    {
+        yield return new WaitForSeconds(powerDuration);
+        Time.timeScale = 1f;
+    //    EditUI.gameObject.SetActive(false);
     }
 
     public void Respawn()
     {
-        this.gameObject.transform.position = startingPosition;
+        this.gameObject.transform.position = startingPosition;          // restarts position to starting position. No checkpoints.
     }
 
     void FixedUpdate()

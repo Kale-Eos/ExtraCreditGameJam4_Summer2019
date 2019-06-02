@@ -11,14 +11,14 @@ public class TimerCountdown : MonoBehaviour
 
     AudioManager audioManager;
 
-    public string sceneName; 
+    public string gameOverSceneName; 
     private float timer;
     private bool canCount = true;
     private bool playOnce = false;
 
     void Start()
     {
-        timer -= mainTimer;
+        timer = mainTimer;
     }
 
     void Update()
@@ -26,7 +26,7 @@ public class TimerCountdown : MonoBehaviour
         if (timer >= 0.0f && canCount)
         {
             timer -= Time.deltaTime;
-            uiText.text = timer.ToString("F");
+            uiText.text = timer.ToString("f");
         }
 
         else if (timer <= 0.0f && !playOnce)
@@ -35,16 +35,16 @@ public class TimerCountdown : MonoBehaviour
             playOnce = true;
             uiText.text = "0.00";
             timer = 0.0f;
-            GameOver();
+            //GameOver();
         }
 
     }
 
     void GameOver()
     {
-        audioManager.StopSound("Level_BGM");
-        audioManager.PlaySound("GameOver_BGM");
-        SceneManager.LoadScene(sceneName);
+       // audioManager.StopSound("Level_BGM");
+       // audioManager.PlaySound("GameOver_BGM");
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void ResetButton()
