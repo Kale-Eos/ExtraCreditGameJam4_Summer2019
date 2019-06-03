@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 1539537345}
   - component: {fileID: 1539537344}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player Control
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
