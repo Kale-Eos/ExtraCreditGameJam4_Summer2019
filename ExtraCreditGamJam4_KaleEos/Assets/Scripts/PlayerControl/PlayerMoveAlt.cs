@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerMoveAlt : MonoBehaviour
 {
     AudioManager audioManager;
+    public Animator idle; 
 
     private Rigidbody2D rb;
     public float speed;
@@ -64,11 +65,13 @@ public class PlayerMoveAlt : MonoBehaviour
         if (facingRight = false && moveInput > 0)
         {
             Flip();
+            idle.SetFloat("ToRun", 2);
             // transform.eulerAngles = new Vector3(0, 0, 0);
         }
         else if (facingRight = true && moveInput < 0)
         {
             Flip();
+            idle.SetFloat("ToRun", 0);
             // transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }

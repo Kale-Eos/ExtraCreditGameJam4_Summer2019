@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     AudioManager audioManager;
+    public Animator idle;
 
     public float speed;                     // custom speed var
     private float moveInput;                // left-right input
@@ -152,6 +153,16 @@ public class PlayerMove : MonoBehaviour
 
         // movement conditions
         moveInput = Input.GetAxis("Horizontal");
+
+        if (moveInput >= 0)
+        {
+            idle.SetFloat("ToRun", 2);
+        }
+        else if (moveInput == 0)
+        {
+            idle.SetFloat("ToRun", 0);
+        }
+
         // Debug.Log(moveInput);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 

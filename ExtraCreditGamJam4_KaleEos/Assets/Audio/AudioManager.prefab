@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3082943095601514496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3082943095601514526}
+  - component: {fileID: 3082943095601514527}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3082943095601514526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082943095601514496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.4810638, y: 2.5443573, z: -6.7460938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3082943095601514527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082943095601514496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ee4a39331797e45988766bee9c1c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Music
+    clip: {fileID: 8300000, guid: 78eb873029a00da4cb960a55e32f9dfd, type: 3}
+    volume: 0.7
+    tempo: 1
+    RandomVolume: 0
+    RandomTempo: 0
+    loop: 1
+  - name: Level1_BGM
+    clip: {fileID: 8300000, guid: cbb3b1884034ca54ebecb5db83e7f5eb, type: 3}
+    volume: 0.7
+    tempo: 1
+    RandomVolume: 0
+    RandomTempo: 0
+    loop: 1
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: d58d4899b94c0e54d903343fca059a59, type: 3}
+    volume: 0.8
+    tempo: 1
+    RandomVolume: 0
+    RandomTempo: 0.3
+    loop: 0
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 081182fdec686df47a449672e99950a1, type: 3}
+    volume: 0.6
+    tempo: 1
+    RandomVolume: 0
+    RandomTempo: 0
+    loop: 0
+  - name: SlowDownTime
+    clip: {fileID: 8300000, guid: 9df9e1cc58d2c444e8435d7672c97bdf, type: 3}
+    volume: 1
+    tempo: 1
+    RandomVolume: 0
+    RandomTempo: 0.2
+    loop: 0
+  - name: ObjectSnap
+    clip: {fileID: 8300000, guid: 9ff6f4d3fd477f94182ca9b26d4e8c66, type: 3}
+    volume: 0.5
+    tempo: 1
+    RandomVolume: 0.1
+    RandomTempo: 0.3
+    loop: 0
+  - name: GameOver_BGM
+    clip: {fileID: 8300000, guid: cbb3b1884034ca54ebecb5db83e7f5eb, type: 3}
+    volume: 1
+    tempo: 0.5
+    RandomVolume: 0
+    RandomTempo: 0.2
+    loop: 1

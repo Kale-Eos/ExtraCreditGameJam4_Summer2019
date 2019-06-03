@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeController : MonoBehaviour
 {
-    public Animator BlurFade;
+    public Animator FadeOut;
     [SerializeField]
     string sceneName1 = "Level1";
     [SerializeField]
@@ -13,39 +13,39 @@ public class FadeController : MonoBehaviour
     [SerializeField]
     string sceneName3 = "Level3";
     [SerializeField]
-    string sceneNameFree = "FreeRoam";
-    [SerializeField]
-    string sceneNameCredits = "CreditsScene";
+    //string sceneNameFree = "FreeRoam";
+    //[SerializeField]
+    //string sceneNameCredits = "CreditsScene";
 
     public void Loader1()
     {
-        BlurFade.SetTrigger("End");
-        Invoke("LoadScene1", 5);                             // loads onto the Level 1 scene
+        FadeOut.SetTrigger("End");
+        Invoke("LoadScene1", 2);                             // loads onto the Level 1 scene
     }
 
     public void Loader2()
     {
-        BlurFade.SetTrigger("End");
-        Invoke("LoadScene2", 5);                             // loads onto the Level 2 scene
+        FadeOut.SetTrigger("End");
+        Invoke("LoadScene2", 1);                             // loads onto the Level 2 scene
     }
 
     public void Loader3()
     {
-        BlurFade.SetTrigger("End");
-        Invoke("LoadScene3", 5);                             // loads onto the Level 3 scene
+        FadeOut.SetTrigger("End");
+        Invoke("LoadScene3", 1);                             // loads onto the Level 3 scene
     }
 
-    public void LoaderFree()
-    {
-        BlurFade.SetTrigger("End");
-        Invoke("LoadSceneFreeRoam", 5);                      // loads onto the Free Roam scene
-    }
+    //public void LoaderFree()
+    //{
+    //    Fade.SetTrigger("End");
+    //    Invoke("LoadSceneFreeRoam", 5);                      // loads onto the Free Roam scene
+    //}
 
-    public void LoaderCredits()
-    {
-        BlurFade.SetTrigger("End");
-        Invoke("LoadSceneCredits", 5);                      // loads onto the Credits scene
-    }
+    //public void LoaderCredits()
+    //{
+    //    Fade.SetTrigger("End");
+    //    Invoke("LoadSceneCredits", 5);                      // loads onto the Credits scene
+    //}
 
     void LoadScene1()
     {
@@ -62,13 +62,13 @@ public class FadeController : MonoBehaviour
         SceneManager.LoadScene(sceneName3);                  // function onto the Level 3 scene
     }
 
-    void LoadSceneFreeRoam()
-    {
-        SceneManager.LoadScene(sceneNameFree);               // function onto the tutorial scene
-    }
+    //void LoadSceneFreeRoam()
+    //{
+    //    SceneManager.LoadScene(sceneNameFree);               // function onto the tutorial scene
+    //}
 
-    void LoadSceneCredits()
-    {
-        SceneManager.LoadScene(sceneNameCredits);               // function onto the tutorial scene
-    }
+    //void LoadSceneCredits()
+    //{
+    //    SceneManager.LoadScene(sceneNameCredits);               // function onto the tutorial scene
+    //}
 }

@@ -35,15 +35,15 @@ public class TimerCountdown : MonoBehaviour
             playOnce = true;
             uiText.text = "0.00";
             timer = 0.0f;
-            //GameOver();
+            GameOver();
         }
 
     }
 
     void GameOver()
     {
-       // audioManager.StopSound("Level_BGM");
-       // audioManager.PlaySound("GameOver_BGM");
+        audioManager.StopSound("Level1_BGM");
+        audioManager.PlaySound("GameOver_BGM");
         SceneManager.LoadScene(gameOverSceneName);
     }
 
