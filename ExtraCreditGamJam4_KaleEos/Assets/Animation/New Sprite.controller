@@ -36,7 +36,7 @@ AnimatorController:
   m_Name: New Sprite
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: ToRun
+  - m_Name: moveInput
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -116,8 +116,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: ToRun
-    m_EventTreshold: 0
+    m_ConditionEvent: moveInput
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6302946096489280159}
   m_Solo: 0
@@ -141,8 +141,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: ToRun
-    m_EventTreshold: 1
+    m_ConditionEvent: moveInput
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4888631322101094858}
   m_Solo: 0

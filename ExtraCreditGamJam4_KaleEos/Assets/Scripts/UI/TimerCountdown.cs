@@ -11,14 +11,16 @@ public class TimerCountdown : MonoBehaviour
 
     AudioManager audioManager;
 
-    public string gameOverSceneName; 
     private float timer;
     private bool canCount = true;
     private bool playOnce = false;
 
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         timer = mainTimer;
+
+        Scene currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class TimerCountdown : MonoBehaviour
     {
         audioManager.StopSound("Level1_BGM");
         audioManager.PlaySound("GameOver_BGM");
-        SceneManager.LoadScene(gameOverSceneName);
+        SceneManager.LoadScene("GameOver");
     }
 
     public void ResetButton()

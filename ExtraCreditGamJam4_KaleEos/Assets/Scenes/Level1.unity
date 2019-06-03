@@ -670,7 +670,6 @@ GameObject:
   - component: {fileID: 601095523}
   - component: {fileID: 601095522}
   - component: {fileID: 601095521}
-  - component: {fileID: 601095524}
   - component: {fileID: 601095525}
   m_Layer: 0
   m_Name: SceneManager
@@ -730,25 +729,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &601095524
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601095520}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6fe4e9ca5618fb4a8aaae80fb5291ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &601095525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,6 +1437,7 @@ GameObject:
   - component: {fileID: 1539537346}
   - component: {fileID: 1539537345}
   - component: {fileID: 1539537344}
+  - component: {fileID: 1539537350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1476,7 +1457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddef95b2f50e6e479a3df4ae4eeeb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: {fileID: 601095524}
+  animator: {fileID: 0}
   speed: 7
   jumpForce: 5
   jumpTime: 0.5
@@ -1505,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f5ee633a9634a42adff18669f749dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: {fileID: 601095524}
+  idle: {fileID: 1539537350}
   speed: 7
   jumpForce: 5
   extraJumpsValue: 1
@@ -1635,6 +1616,25 @@ Transform:
   m_Father: {fileID: 1993546688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1539537350
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539537343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6fe4e9ca5618fb4a8aaae80fb5291ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1600661509
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,6 +6894,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082943095601514496, guid: 8eb22f90bbedc4740842dcd39868235c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3082943095601514526, guid: 8eb22f90bbedc4740842dcd39868235c,
         type: 3}

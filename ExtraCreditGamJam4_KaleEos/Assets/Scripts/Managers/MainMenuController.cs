@@ -36,6 +36,8 @@ public class MainMenuController : MonoBehaviour
     string freeRoam = "FreeRoam";                           // instantiates Free Roam BGM
     [SerializeField]
     string credits_bgm = "Credits_BGM";
+    [SerializeField]
+    string gameOver_bgm = "GameOver_bgm";
 
     public void OnMouseOver()
     {
@@ -107,6 +109,11 @@ public class MainMenuController : MonoBehaviour
         audioManager.StopSound(credits_bgm);                // Stop Free Roam bgm
     }
 
+    public void StopGameOver_BGM()
+    {
+        audioManager.StopSound(gameOver_bgm);               // Stop Game Over bgm
+    }
+
     // Level BGM Control ///////////////////////////////////////////////////////////////////////////////////
 
     public void BackToMainMenu()
@@ -115,17 +122,10 @@ public class MainMenuController : MonoBehaviour
         audioManager.PlaySound("Music");            // Restarts main menu music
     }
 
-    public void CreditsToMainMenu()
-    {
-        CreditsBlur.SetTrigger("SetBlur");
-        CreditsBlur.Play("CreditsBlur");
-        Invoke("CreditsToMenu", 5);
-    }
-
-    void CreditsToMenu()
+    public void GameOverToMenu()
     {
         SceneManager.LoadScene("TitleScene");        // Reverses the the scene change to go back to Title Scene
-        audioManager.StopSound("Credits_BGM");       // Stop playing Credits_BGM
+        audioManager.StopSound("GameOver_BGM");      // Stop playing Credits_BGM
         audioManager.PlaySound("Music");             // Restarts main menu music
     }
 
