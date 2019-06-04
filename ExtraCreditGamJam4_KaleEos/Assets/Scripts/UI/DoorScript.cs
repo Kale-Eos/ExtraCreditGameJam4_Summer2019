@@ -15,9 +15,8 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        audioManager.StopSound("ShootingStars");
         audioManager.StopSound("Level1_BGM");
-        audioManager.PlaySound("Level2_BGM");
+        audioManager.PlaySound("Level1_BGM");
 
         if (other.gameObject.CompareTag("Player"))
         {

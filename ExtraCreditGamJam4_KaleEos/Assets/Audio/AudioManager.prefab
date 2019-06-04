@@ -56,7 +56,7 @@ MonoBehaviour:
     volume: 0.7
     tempo: 1
     RandomVolume: 0
-    RandomTempo: 0
+    RandomTempo: 0.1
     loop: 1
   - name: ButtonHover
     clip: {fileID: 8300000, guid: d58d4899b94c0e54d903343fca059a59, type: 3}
@@ -89,7 +89,7 @@ MonoBehaviour:
   - name: GameOver_BGM
     clip: {fileID: 8300000, guid: cbb3b1884034ca54ebecb5db83e7f5eb, type: 3}
     volume: 1
-    tempo: 0.5
+    tempo: 0.6
     RandomVolume: 0
     RandomTempo: 0.2
     loop: 1

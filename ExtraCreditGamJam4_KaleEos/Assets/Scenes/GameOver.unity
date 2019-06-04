@@ -561,7 +561,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 898400133}
-        m_MethodName: Loader1
+        m_MethodName: Loader2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5893,8 +5893,7 @@ MonoBehaviour:
   level2_bgm: Level2_BGM
   level3_bgm: Level3_BGM
   freeRoam: FreeRoam
-  credits_bgm: Credits_BGM
-  gameOver_bgm: GameOver_bgm
+  gameOver_bgm: GameOver_BGM
 --- !u!4 &898400135
 Transform:
   m_ObjectHideFlags: 0

@@ -2592,7 +2592,7 @@ MonoBehaviour:
   level2_bgm: Level2_BGM
   level3_bgm: Level3_BGM
   freeRoam: FreeRoam
-  credits_bgm: Credits_BGM
+  gameOver_bgm: GameOver_BGM
 --- !u!4 &1752303238
 Transform:
   m_ObjectHideFlags: 0

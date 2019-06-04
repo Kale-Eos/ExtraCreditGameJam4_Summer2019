@@ -3,32 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Spawn : MonoBehaviour
-{
-    public GameObject item;
-    private Transform player;
-
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    public void SpawnDroppedItem()
-    {
-        // GameObject itemInstance;
-
-        Vector2 playerPos = new Vector2(player.position.x, player.position.y - 2);
-        // itemInstance = Instantiate(item, playerPos, Quaternion.identity) as GameObject;
-        // itemInstance.GetComponent<Rigidbody2D>().AddForce(itemInstance.transform.up * 0);
-    }
-}
-
 public class ObjectDrop : MonoBehaviour
 {
     private Inventory inventory;
     public int i;
 
-    public GameObject item;
     private Transform player;
 
     private void Start()
@@ -43,12 +22,30 @@ public class ObjectDrop : MonoBehaviour
             inventory.isFull[i] = false;
         }
     }
-
-    public void DropItem()
+    
+    public void DropFloater()
     {
         foreach (Transform child in transform)
         {
-            child.GetComponent<Spawn>().SpawnDroppedItem();
+            child.GetComponent<Spawn>().SpawnFloater();
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
+    public void DropAntiGrav()
+    {
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Spawn>().SpawnAntiGrav();
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
+    public void DropPasser()
+    {
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Spawn>().SpawnPasser();
             GameObject.Destroy(child.gameObject);
         }
     }

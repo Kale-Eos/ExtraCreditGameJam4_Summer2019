@@ -35,9 +35,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField]
     string freeRoam = "FreeRoam";                           // instantiates Free Roam BGM
     [SerializeField]
-    string credits_bgm = "Credits_BGM";
-    [SerializeField]
-    string gameOver_bgm = "GameOver_bgm";
+    string gameOver_bgm = "GameOver_BGM";                   // instantiates Game Over BGM
 
     public void OnMouseOver()
     {
@@ -97,16 +95,6 @@ public class MainMenuController : MonoBehaviour
     public void StopFreeRoam_BGM()
     {
         audioManager.StopSound(freeRoam);                   // Stop Free Roam bgm
-    }
-
-    public void PlayCredits_BGM()
-    {
-        audioManager.PlaySound(credits_bgm);                // Plays Free Roam bgm
-    }
-
-    public void StopCredits_BGM()
-    {
-        audioManager.StopSound(credits_bgm);                // Stop Free Roam bgm
     }
 
     public void StopGameOver_BGM()

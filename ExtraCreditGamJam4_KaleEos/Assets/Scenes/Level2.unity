@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bc0db320700aa4086f4a0e6f98cc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level1
+  sceneName: Level2
   pauseUI: {fileID: 665607247}
 --- !u!114 &601095525
 MonoBehaviour:
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 1600661511}
-  mainTimer: 30
+  mainTimer: 20
 --- !u!114 &601095526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303213113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.149998, y: -1.5700002, z: 2}
+  m_LocalPosition: {x: 1.99, y: -13.03, z: 2}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 956291705}
@@ -2649,7 +2649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1539537350}
   speed: 7
-  jumpForce: 2
+  jumpForce: 5
   jumpTime: 0.5
   isGrounded: 0
   groundCheck: {fileID: 1800971531}
@@ -2658,7 +2658,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   startingPosition: {x: 0, y: 2, z: 0}
-  deathHeight: -5
+  deathHeight: -20
   EditUI: {fileID: 1916577512}
   cooldownState: 0
   powerDuration: 2
@@ -2678,7 +2678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1539537350}
   speed: 7
-  jumpForce: 2
+  jumpForce: 5
   extraJumpsValue: 1
   groundCheck: {fileID: 1800971531}
   checkRadius: 0.1
@@ -2686,7 +2686,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   startingPosition: {x: 0, y: 2, z: 0}
-  deathHeight: -5
+  deathHeight: -20
   EditUI: {fileID: 1916577512}
   cooldownState: 0
   powerDuration: 2
@@ -7777,7 +7777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2215fe307b14a5146bbf0d48754c0b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level2
+  sceneName: TitleScene
 --- !u!212 &1716615779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7834,7 +7834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716615777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.05, y: 5.43, z: 0}
+  m_LocalPosition: {x: 1.64, y: -6.0299997, z: 0}
   m_LocalScale: {x: 2, y: 4, z: 1}
   m_Children:
   - {fileID: 1126547719}
@@ -7853,7 +7853,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

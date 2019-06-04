@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     AudioManager audioManager;
-    public Animator idle;
+    public Animator animator;
 
     public float speed;                     // custom speed var
     private float moveInput;                // left-right input
@@ -156,6 +156,7 @@ public class PlayerMove : MonoBehaviour
 
         // Debug.Log(moveInput);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        animator.SetFloat("SpeedAnim", Mathf.Abs(moveInput));
 
         if (facingRight == false && moveInput > 0)
         {
@@ -165,6 +166,7 @@ public class PlayerMove : MonoBehaviour
 
         else if (facingRight == true && moveInput < 0)
         {
+
             Flip();                                                 // for sprites
             // transform.eulerAngles = new Vector3(0, 180, 0);      // for bone structure
         }
