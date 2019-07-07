@@ -8,7 +8,7 @@ The extra credit challenges were:
 4. **Extra Monochromatic**: Use only a 2 color palette (Credit: EnioLotero, SmallTestAccount)
 5. **Extra Kuleshov Effect**: Use the principles of the Kuleshov Effect to your advantage. This is the most recent Extra Credits episode! (credit: Extra Credits)
 
-The link to the official submission page to the Extra Credits Game Jam #4 is found [here](https://itch.io/jam/extra-credits-game-jam-4/rate/432818).
+The link to the official submission page to the Extra Credits Game Jam #4 is found [here](https://itch.io/jam/extra-credits-game-jam-4/rate/432818).  Further development of the game will be returned to at a (currently unknown) time.  Feel free to see the game's status as of time of submission.
 
 - This was completed using Unity Ver2019.1.3f1 and the asset packages used are TextMeshPro and CineMachine.
 - The challenges completed were "Extra"-Vert and Extra Monochromatic.
